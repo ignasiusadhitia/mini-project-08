@@ -50,7 +50,7 @@ export default {
         7.5: '30px',
       },
       borderRadius: {
-        '3.5xl': '2rem',
+        '3.5xl': '1.8125rem',
       },
     },
   },
