@@ -2,11 +2,13 @@ import React from 'react';
 
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
+import { Navbar } from '@components';
 import { About, Blog, BlogDetails, Home, Newsletter, NotFound } from '@pages';
 
 const App = () => {
   return (
     <Router>
+      <Navbar />
       <Routes>
         <Route element={<Home />} path="/" />
         <Route element={<Blog />} path="/blog" />
