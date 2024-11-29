@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
-import { Navbar } from '@components';
+import { Footer, Navbar } from '@components';
 import { About, Blog, BlogDetails, Home, Newsletter, NotFound } from '@pages';
 
 const App = () => {
@@ -17,6 +17,7 @@ const App = () => {
         <Route element={<Newsletter />} path="/contact" />
         <Route element={<NotFound />} path="*" />
       </Routes>
+      <Footer />
     </Router>
   );
 };

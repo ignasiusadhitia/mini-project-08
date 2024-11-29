@@ -29,14 +29,14 @@ const Navbar = () => {
     <nav className="container flex items-center justify-between py-2.5 mt-7.5 mb-5">
       {/* Logo */}
       <Link to="/">
-        <span className="font-semibold text-lg">LumosBlog</span>
+        <span className="font-semibold text-lg leading-6">LumosBlog</span>
       </Link>
 
       <div className="flex items-center gap-3.5">
         {/* Navigation Links */}
         <ul className="flex items-center gap-3.5">
           {navLinks.map((link) => (
-            <li key={link.label} className="text-lg p-2">
+            <li key={link.label} className="text-lg leading-6 p-2">
               <Link to={link.href}>{link.label}</Link>
             </li>
           ))}
