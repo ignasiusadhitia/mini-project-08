@@ -1,4 +1,3 @@
-import js from '@eslint/js';
 import prettierConfig from 'eslint-config-prettier';
 import eslintPluginImport from 'eslint-plugin-import';
 import prettier from 'eslint-plugin-prettier';
@@ -6,6 +5,8 @@ import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import globals from 'globals';
+
+import js from '@eslint/js';
 
 export default [
   { ignores: ['dist'] },
@@ -25,12 +26,11 @@ export default [
       'import/resolver': {
         alias: {
           map: [
-            ['@', './src'],
             ['@assets', './src/assets'],
             ['@components', './src/components'],
             ['@hooks', './src/hooks'],
             ['@pages', './src/pages'],
-            ['@redux', './src/redux'],
+            ['@store', './src/redux'],
             ['@services', './src/services'],
             ['@utils', './src/utils'],
           ],
@@ -43,15 +43,13 @@ export default [
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
       import: eslintPluginImport,
-      prettier, // Menambahkan prettier ke dalam plugin
+      prettier,
     },
     rules: {
       ...js.configs.recommended.rules,
       ...react.configs.recommended.rules,
       ...react.configs['jsx-runtime'].rules,
       ...reactHooks.configs.recommended.rules,
-
-      // Prettier integration (disables conflicting rules)
       ...prettierConfig.rules,
       'prettier/prettier': [
         'error',
@@ -64,8 +62,6 @@ export default [
           arrowParens: 'always',
         },
       ],
-
-      // Custom rules
       'react/jsx-no-target-blank': 'off',
       'react-refresh/only-export-components': [
         'warn',
@@ -81,13 +77,18 @@ export default [
         'error',
         {
           groups: [
-            'builtin', // Node.js modules
-            'external', // npm modules
-            'internal', // Aliases
-            ['parent', 'sibling', 'index'], // Relative imports
-            'unknown', // Other cases
+            'builtin',
+            'external',
+            'internal',
+            ['parent', 'sibling', 'index'],
+            'unknown',
           ],
           pathGroups: [
+            {
+              pattern: '@*/**',
+              group: 'internal',
+              position: 'before',
+            },
             {
               pattern: 'react',
               group: 'external',
