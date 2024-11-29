@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Link } from 'react-router-dom';
 
+import { PostLabel } from '@components';
 import { ArrowLink } from '@icons';
 import { articleImg } from '@images';
 
@@ -12,7 +13,23 @@ const article = {
   title: 'UX review presentations',
   description:
     'How do you create compelling presentations that wow your colleagues and impress your managers?',
-  categories: ['Design', 'Research', 'Presentation'],
+  categories: [
+    {
+      label: 'Design',
+      bgColor: 'bg-soft-purple-1',
+      labelColor: 'text-purple',
+    },
+    {
+      label: 'Research',
+      bgColor: 'bg-soft-purple-2',
+      labelColor: 'text-blue',
+    },
+    {
+      label: 'Presentation',
+      bgColor: 'bg-soft-pink-1',
+      labelColor: 'text-pink',
+    },
+  ],
   key: 'ux-review-presentations',
 };
 
@@ -45,7 +62,17 @@ const PostCard = () => {
           </div>
 
           {/* Article categories */}
-          <div></div>
+          <ul className="flex gap-2">
+            {article.categories.map(({ label, bgColor, labelColor }) => (
+              <li key={label}>
+                <PostLabel
+                  bgColor={bgColor}
+                  label={label}
+                  labelColor={labelColor}
+                />
+              </li>
+            ))}
+          </ul>
         </div>
       </article>
     </Link>
