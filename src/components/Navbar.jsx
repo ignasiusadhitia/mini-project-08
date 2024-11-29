@@ -26,7 +26,7 @@ const Navbar = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');
   };
   return (
-    <nav className="container flex items-center justify-between py-2.5 mt-7.5 mb-5">
+    <nav className="container flex items-center justify-between py-2.5 mt-7.5 mb-5 text-black-2">
       {/* Logo */}
       <Link to="/">
         <span className="font-semibold text-lg leading-6">LumosBlog</span>

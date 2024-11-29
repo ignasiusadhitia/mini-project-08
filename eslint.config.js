@@ -27,6 +27,7 @@ export default [
         alias: {
           map: [
             ['@icons', './src/assets/icons'],
+            ['@images', './src/assets/images'],
             ['@components', './src/components'],
             ['@hooks', './src/hooks'],
             ['@pages', './src/pages'],

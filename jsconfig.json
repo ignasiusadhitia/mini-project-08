@@ -3,6 +3,7 @@
     "baseUrl": "./",
     "paths": {
       "@icons": ["src/assets/icons/index.js"],
+      "@images": ["src/assets/images/index.js"],
       "@components": ["src/components/index.js"],
       "@hooks/*": ["src/hooks/*"],
       "@pages": ["src/pages/index.js"],
