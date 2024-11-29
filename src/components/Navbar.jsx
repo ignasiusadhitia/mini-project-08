@@ -51,8 +51,8 @@ const Navbar = () => {
             }`}
             onClick={toggleTheme}
           ></div>
-          <Sun className="cursor-pointer" />
-          <Moon className="cursor-pointer" />
+          <Sun className="cursor-pointer" onClick={toggleTheme} />
+          <Moon className="cursor-pointer" onClick={toggleTheme} />
         </div>
       </div>
     </nav>
