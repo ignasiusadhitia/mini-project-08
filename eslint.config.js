@@ -26,7 +26,7 @@ export default [
       'import/resolver': {
         alias: {
           map: [
-            ['@assets', './src/assets'],
+            ['@icons', './src/assets/icons'],
             ['@components', './src/components'],
             ['@hooks', './src/hooks'],
             ['@pages', './src/pages'],

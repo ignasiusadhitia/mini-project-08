@@ -46,6 +46,12 @@ export default {
           '2xl': '1216px',
         },
       },
+      margin: {
+        7.5: '30px',
+      },
+      borderRadius: {
+        '3.5xl': '2rem',
+      },
     },
   },
   plugins: [],
