@@ -32,7 +32,9 @@ const Footer = () => {
         <ul className="flex gap-3.5">
           {navLinks.map(({ name, path }) => (
             <li key={name}>
-              <a href={path}>{name}</a>
+              <a href={path} rel="noreferrer noopener" target="_black">
+                {name}
+              </a>
             </li>
           ))}
         </ul>
