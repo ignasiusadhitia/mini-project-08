@@ -49,6 +49,7 @@ export default {
       margin: {
         0.5: '0.125rem',
         7.5: '30px',
+        19: '75px',
       },
       padding: {
         7.5: '30px',
@@ -65,6 +66,9 @@ export default {
         50: '12.5rem',
         57: '14.25rem',
         62: '15.375rem',
+      },
+      width: {
+        85.5: '21.375rem',
       },
     },
   },

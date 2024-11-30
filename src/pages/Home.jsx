@@ -54,7 +54,7 @@ const Home = () => {
           </h2>
 
           {/* Post list */}
-          <PostList />
+          <PostList display="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 " />
         </section>
       </main>
     </>
