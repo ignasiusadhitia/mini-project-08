@@ -1,38 +1,8 @@
-import React from 'react';
-
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import { PostLabel } from '@components';
 import { ArrowLink } from '@icons';
-import { articleImg } from '@images';
-
-const article = {
-  image: articleImg,
-  author: 'Olivia Rhye',
-  date: '1 Jan 2023',
-  title: 'UX review presentations',
-  description:
-    'How do you create compelling presentations that wow your colleagues and impress your managers?',
-  categories: [
-    {
-      label: 'Design',
-      bgColor: 'bg-soft-purple-1',
-      labelColor: 'text-purple',
-    },
-    {
-      label: 'Research',
-      bgColor: 'bg-soft-purple-2',
-      labelColor: 'text-blue',
-    },
-    {
-      label: 'Presentation',
-      bgColor: 'bg-soft-pink-1',
-      labelColor: 'text-pink',
-    },
-  ],
-  key: 'ux-review-presentations',
-};
 
 const PostCard = ({
   margin,
@@ -41,9 +11,10 @@ const PostCard = ({
   imageHeight,
   showIcon,
   clampText,
+  post,
 }) => {
   return (
-    <Link to={`/blog/${article.key}`}>
+    <Link to={`/blog/${post?.key}`}>
       <article
         className={`container grid grid-col-1 gap-8 ${margin} ${display}`}
       >
@@ -51,46 +22,40 @@ const PostCard = ({
         <img
           alt=""
           className={`${imageWidth} ${imageHeight ? imageHeight : 'h-50'} object-cover`}
-          src={article.image}
+          src={post?.thumb}
         />
 
         <div className="flex flex-col gap-6">
           <div className="flex flex-col gap-3">
             {/* Article info */}
             <div className="text-purple font-semibold text-sm">
-              <span>{article.author}</span>
+              <span>{post?.author}</span>
               <span> • </span>
-              <time dateTime="">{article.date}</time>
+              <time dateTime="">{post?.time}</time>
             </div>
 
             {/* Article title */}
-            <div className="flex justify-between items-center">
-              <h3 className="text-black-2 text-2xl font-semibold">
-                {article.title}
+            <div className="flex justify-between gap-8">
+              <h3 className="text-black-2 text-2xl font-semibold line-clamp-2">
+                {post?.title}
               </h3>
-              {showIcon && <ArrowLink />}
+              <div>{showIcon && <ArrowLink />}</div>
             </div>
 
             {/* Article categories */}
             <p
-              className={`text-gray-1 text-base ${clampText ? 'line-clamp-2' : ''}`}
+              className={`text-gray-1 text-base ${clampText ? 'line-clamp-2' : 'line-clamp-3'}`}
             >
-              {article.description}
+              {post?.desc.substring(0, 250)}...
             </p>
           </div>
 
           {/* Article categories */}
-          <ul className="flex gap-2">
-            {article.categories.map(({ label, bgColor, labelColor }) => (
-              <li key={label}>
-                <PostLabel
-                  bgColor={bgColor}
-                  label={label}
-                  labelColor={labelColor}
-                />
-              </li>
-            ))}
-          </ul>
+          <PostLabel
+            bgColor="bg-soft-pink-1"
+            label={post?.tag}
+            labelColor="text-pink"
+          />
         </div>
       </article>
     </Link>
@@ -98,6 +63,15 @@ const PostCard = ({
 };
 
 PostCard.propTypes = {
+  post: PropTypes.shape({
+    title: PropTypes.string,
+    thumb: PropTypes.string,
+    author: PropTypes.string,
+    tag: PropTypes.string,
+    time: PropTypes.string,
+    desc: PropTypes.string,
+    key: PropTypes.string,
+  }),
   margin: PropTypes.string,
   showIcon: PropTypes.bool,
   imageWidth: PropTypes.string,

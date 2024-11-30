@@ -4,17 +4,24 @@ import PropTypes from 'prop-types';
 
 import { PostCard } from '@components';
 
-const PostList = ({ display }) => {
+const PostList = ({ posts, display }) => {
   return (
     <div className={`${display} gap-8 py-7.5 mt-0.5`}>
-      {Array.from({ length: 6 }).map((_, index) => (
-        <PostCard key={index} showIcon imageHeight="h-60" imageWidth="w-full" />
+      {posts?.map((postData, index) => (
+        <PostCard
+          key={index}
+          showIcon
+          imageHeight="h-60"
+          imageWidth="w-full"
+          post={postData}
+        />
       ))}
     </div>
   );
 };
 
 PostList.propTypes = {
+  posts: PropTypes.arrayOf(PropTypes.object),
   display: PropTypes.string,
 };
 

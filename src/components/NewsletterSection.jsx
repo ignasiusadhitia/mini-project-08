@@ -1,6 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
+
+import usePosts from '@hooks/usePosts';
 
 const NewsletterSection = () => {
+  const [email, setEmail] = useState('');
+
+  const { postData, isSubmitting } = usePosts('/subscribe');
+
+  const handleChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await postData({ email });
+      console.log('Subscription successful:', response);
+    } catch (error) {
+      console.log('Subscription failed:', error);
+    }
+
+    setEmail('');
+  };
+
   return (
     <div>
       <h2>Newsletter</h2>
@@ -9,9 +32,17 @@ const NewsletterSection = () => {
         Subscribe to learn about new product features, the latest in technology,
         solutions, and updates.
       </p>
-      <form>
-        <input id="emain" name="email" type="email" />
-        <button type="submit">Subscribe</button>
+      <form onSubmit={handleSubmit}>
+        <input
+          id="emain"
+          name="email"
+          type="email"
+          value={email}
+          onChange={handleChange}
+        />
+        <button disabled={isSubmitting} type="submit">
+          Subscribe
+        </button>
       </form>
     </div>
   );

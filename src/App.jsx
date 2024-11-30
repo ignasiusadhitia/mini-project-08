@@ -15,7 +15,7 @@ const routes = [
     element: <Blog />,
   },
   {
-    path: '/blog/:key',
+    path: '/blog/*',
     element: <BlogDetails />,
   },
   {

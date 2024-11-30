@@ -1,8 +1,14 @@
-import React from 'react';
+import usePosts from '@hooks/usePosts';
 
 import { PostCard, PostList } from '@components';
 
 const Home = () => {
+  const { data: recentPosts } = usePosts('/games?page=4');
+  const { data: posts, isLoading, error } = usePosts('/games/news');
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+
   return (
     <>
       {/* Header */}
@@ -23,17 +29,24 @@ const Home = () => {
           {/* Post cards */}
           <div>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 pt-8 pb-7.5">
-              <PostCard showIcon imageHeight="h-57" imageWidth="w-full" />
+              <PostCard
+                showIcon
+                imageHeight="h-57"
+                imageWidth="w-full"
+                post={recentPosts[0]}
+              />
               <div className="grid grid-rows-2 gap-8">
                 <PostCard
                   clampText
                   display="md:flex"
                   imageWidth="w-full md:w-80"
+                  post={recentPosts[1]}
                 />
                 <PostCard
                   clampText
                   display="md:flex"
                   imageWidth="w-full md:w-80"
+                  post={recentPosts[2]}
                 />
               </div>
             </div>
@@ -43,6 +56,7 @@ const Home = () => {
               imageHeight="h-50"
               imageWidth="w-full"
               margin="my-7.5"
+              post={recentPosts[3]}
             />
           </div>
         </section>
@@ -54,7 +68,12 @@ const Home = () => {
           </h2>
 
           {/* Post list */}
-          <PostList display="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 " />
+          {posts && (
+            <PostList
+              display="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 "
+              posts={posts}
+            />
+          )}
         </section>
       </main>
     </>
