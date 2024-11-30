@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.4.0",
+    "axios": "^1.7.8",
     "dompurify": "^3.2.1",
     "prop-types": "^15.8.1",
     "react": "^18.3.1",

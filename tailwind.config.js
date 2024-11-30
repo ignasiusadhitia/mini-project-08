@@ -48,11 +48,11 @@ export default {
       },
       margin: {
         0.5: '0.125rem',
-        7.5: '30px',
-        19: '75px',
+        7.5: '1.875rem',
+        19: '4.6875rem',
       },
       padding: {
-        7.5: '30px',
+        7.5: '1.875rem',
       },
       borderRadius: {
         '3.5xl': '1.8125rem',
