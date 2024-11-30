@@ -1,5 +1,6 @@
 import React from 'react';
 
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import { PostLabel } from '@components';
@@ -33,12 +34,25 @@ const article = {
   key: 'ux-review-presentations',
 };
 
-const PostCard = () => {
+const PostCard = ({
+  margin,
+  display,
+  imageWidth,
+  imageHeight,
+  showIcon,
+  clampText,
+}) => {
   return (
     <Link to={`/blog/${article.key}`}>
-      <article className="container flex flex-col gap-8">
+      <article
+        className={`container grid grid-col-1 gap-8 ${margin} ${display}`}
+      >
         {/* Article image */}
-        <img alt="" className="w-full" src={article.image} />
+        <img
+          alt=""
+          className={`${imageWidth} ${imageHeight ? imageHeight : 'h-50'} object-cover`}
+          src={article.image}
+        />
 
         <div className="flex flex-col gap-6">
           <div className="flex flex-col gap-3">
@@ -54,11 +68,15 @@ const PostCard = () => {
               <h3 className="text-black-2 text-2xl font-semibold">
                 {article.title}
               </h3>
-              <ArrowLink />
+              {showIcon && <ArrowLink />}
             </div>
 
             {/* Article categories */}
-            <p className="text-gray-1 text-base">{article.description}</p>
+            <p
+              className={`text-gray-1 text-base ${clampText ? 'line-clamp-2' : ''}`}
+            >
+              {article.description}
+            </p>
           </div>
 
           {/* Article categories */}
@@ -77,6 +95,15 @@ const PostCard = () => {
       </article>
     </Link>
   );
+};
+
+PostCard.propTypes = {
+  margin: PropTypes.string,
+  showIcon: PropTypes.bool,
+  imageWidth: PropTypes.string,
+  imageHeight: PropTypes.string,
+  display: PropTypes.string,
+  clampText: PropTypes.bool,
 };
 
 export default PostCard;

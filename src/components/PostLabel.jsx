@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const PostLabel = ({ label, bgColor, labelColor }) => {
   return (
     <span
-      className={`block text-sm py-0.5 px-2.5 rounded-2xl ${bgColor} ${labelColor}`}
+      className={`text-sm py-0.5 px-2.5 rounded-2xl ${bgColor} ${labelColor}`}
     >
       {label}
     </span>

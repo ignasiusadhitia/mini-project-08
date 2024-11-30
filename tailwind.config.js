@@ -47,10 +47,24 @@ export default {
         },
       },
       margin: {
+        0.5: '0.125rem',
+        7.5: '30px',
+      },
+      padding: {
         7.5: '30px',
       },
       borderRadius: {
         '3.5xl': '1.8125rem',
+      },
+      fontSize: {
+        'display-mobile': '4.5rem',
+        'display-tablet': '10.05rem',
+        'display-desktop': '15.2375rem',
+      },
+      height: {
+        50: '12.5rem',
+        57: '14.25rem',
+        62: '15.375rem',
       },
     },
   },
