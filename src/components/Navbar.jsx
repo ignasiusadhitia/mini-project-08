@@ -30,6 +30,11 @@ const Navbar = () => {
 
   const toggleMenu = () => {
     setIsOpen((prev) => !prev);
+
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   };
   return (
     <>
