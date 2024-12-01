@@ -34,7 +34,7 @@ const App = () => {
   return (
     <Router>
       <Navbar />
-      <div className="min-h-screen">
+      <div className="min-h-screen mt-28">
         <Routes>
           {routes.map(({ path, element }) => (
             <Route key={path} element={element} path={path} />
