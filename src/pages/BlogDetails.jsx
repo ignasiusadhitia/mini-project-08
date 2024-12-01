@@ -25,8 +25,7 @@ const BlogDetails = () => {
         {error && <div>Error: {error.message || 'Try again Later'}</div>}
         {recentPosts && (
           <PostList
-            showLabel
-            display="flex flex-col md:grid md:grid-cols-2 lg:flex lg:flex-col"
+            display="flex flex-col md:grid md:grid-cols-2 lg:flex lg:flex-col gap-8 lg:gap-20"
             posts={recentPosts}
           />
         )}
