@@ -1,5 +1,7 @@
 import prettierConfig from 'eslint-config-prettier';
+import cypress from 'eslint-plugin-cypress';
 import eslintPluginImport from 'eslint-plugin-import';
+import jest from 'eslint-plugin-jest';
 import prettier from 'eslint-plugin-prettier';
 import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
@@ -14,7 +16,12 @@ export default [
     files: ['**/*.{js,jsx}'],
     languageOptions: {
       ecmaVersion: 2020,
-      globals: globals.browser,
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+        ...globals.mocha,
+        ...globals.jest,
+      },
       parserOptions: {
         ecmaVersion: 'latest',
         ecmaFeatures: { jsx: true },
@@ -45,6 +52,8 @@ export default [
       'react-refresh': reactRefresh,
       import: eslintPluginImport,
       prettier,
+      cypress,
+      jest,
     },
     rules: {
       ...js.configs.recommended.rules,
@@ -52,6 +61,7 @@ export default [
       ...react.configs['jsx-runtime'].rules,
       ...reactHooks.configs.recommended.rules,
       ...prettierConfig.rules,
+      ...jest.configs.recommended.rules,
       'prettier/prettier': [
         'error',
         {
@@ -121,6 +131,15 @@ export default [
         },
       ],
       'react/jsx-no-duplicate-props': ['error', { ignoreCase: true }],
+      'jest/expect-expect': 'off',
+    },
+  },
+  {
+    files: ['**/*.cy.js', '**/*.cy.jsx'],
+    plugins: ['cypress'],
+    rules: {
+      'no-undef': ['error', { typeof: true }],
+      'cypress/no-assigning-return-values': 'error',
     },
   },
 ];
