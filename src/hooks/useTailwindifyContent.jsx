@@ -10,14 +10,13 @@ const useTailwindifyContent = (content) => {
     // Add Tailwind classes to <iframe> tags
     updatedContent = updatedContent.replace(
       /<iframe([\s\S]*?)<\/iframe>/g,
-      `<div class="relative w-full overflow-hidden aspect-video">
+      `<div class="relative overflow-hidden aspect-video">
          <iframe class="absolute top-0 left-0 w-full h-full" $1</iframe>
        </div>`
     );
 
     return updatedContent;
   }, [content]);
-
   return processedContent;
 };
 
