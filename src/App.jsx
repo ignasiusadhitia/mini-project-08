@@ -34,11 +34,13 @@ const App = () => {
   return (
     <Router>
       <Navbar />
-      <Routes>
-        {routes.map(({ path, element }) => (
-          <Route key={path} element={element} path={path} />
-        ))}
-      </Routes>
+      <div className="min-h-screen">
+        <Routes>
+          {routes.map(({ path, element }) => (
+            <Route key={path} element={element} path={path} />
+          ))}
+        </Routes>
+      </div>
       <Footer />
     </Router>
   );
