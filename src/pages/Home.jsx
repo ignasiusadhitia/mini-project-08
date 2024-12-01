@@ -41,6 +41,7 @@ const Home = () => {
                   <PostCard
                     showIcon
                     showLabel
+                    data-cy="recent-post-card"
                     imageHeight="h-57"
                     imageWidth="w-full"
                     post={recentPosts?.[0]}

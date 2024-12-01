@@ -8,7 +8,7 @@ describe('NewsletterSection Component - E2E Tests', () => {
         body: { success: true },
       }
     ).as('subscribe');
-    cy.visit('http://localhost:5173/blog/2024/11/16/ratatan-16112024'); // Ganti dengan URL sebenarnya
+    cy.visit('http://localhost:5173/blog/2024/11/16/ratatan-16112024');
   });
 
   it('renders the form correctly', () => {
