@@ -31,6 +31,7 @@ const Home = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 pt-8 pb-7.5">
               <PostCard
                 showIcon
+                showLabel
                 imageHeight="h-57"
                 imageWidth="w-full"
                 post={recentPosts?.[0]}
@@ -38,12 +39,14 @@ const Home = () => {
               <div className="grid grid-rows-2 gap-8">
                 <PostCard
                   clampText
+                  showLabel
                   display="md:flex"
                   imageWidth="w-full md:w-80"
                   post={recentPosts?.[1]}
                 />
                 <PostCard
                   clampText
+                  showLabel
                   display="md:flex"
                   imageWidth="w-full md:w-80"
                   post={recentPosts?.[2]}
@@ -52,6 +55,7 @@ const Home = () => {
             </div>
             <PostCard
               showIcon
+              showLabel
               display="lg:grid lg:grid-cols-2 lg:gap-8"
               imageHeight="h-50"
               imageWidth="w-full"
@@ -70,6 +74,7 @@ const Home = () => {
           {/* Post list */}
           {posts && (
             <PostList
+              showLabel
               display="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 "
               posts={posts}
             />
