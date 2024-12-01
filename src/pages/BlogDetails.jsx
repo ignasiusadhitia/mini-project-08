@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import usePosts from '@hooks/usePosts';
 import useTailwindifyContent from '@hooks/useTailwindifyContent';
 
-import { NewsletterSection, PostList } from '@components';
+import { NewsletterSection, PostLabel, PostList } from '@components';
 
 const BlogDetails = () => {
   const { '*': key } = useParams();
@@ -25,8 +25,8 @@ const BlogDetails = () => {
         {error && <div>Error: {error.message || 'Try again Later'}</div>}
         {recentPosts && (
           <PostList
+            showLabel
             display="flex flex-col md:grid md:grid-cols-2 lg:flex lg:flex-col"
-            gap="gap-8 lg:gap-20"
             posts={recentPosts}
           />
         )}
@@ -49,6 +49,23 @@ const BlogDetails = () => {
 
               <div className="flex flex-col gap-8 text-black-2 text-base">
                 {parse(processedContent)}
+              </div>
+
+              <div className="flex flex-wrap gap-2">
+                {post?.results?.categories?.map((category) => (
+                  <PostLabel
+                    key={category}
+                    bgColor={
+                      category === 'Games'
+                        ? 'bg-soft-purple-1'
+                        : 'bg-soft-pink-1'
+                    }
+                    label={category}
+                    labelColor={
+                      category === 'Games' ? 'text-purple' : 'text-red-burnt'
+                    }
+                  />
+                ))}
               </div>
             </div>
           </article>
