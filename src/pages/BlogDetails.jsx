@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 import parse from 'html-react-parser';
 import { useParams } from 'react-router-dom';
 
@@ -16,6 +18,13 @@ const BlogDetails = () => {
   } = usePosts(`/detail/${key}`);
 
   const processedContent = useTailwindifyContent(post?.results?.content);
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, [key]);
 
   return (
     <div className="container p-8 flex flex-col-reverse lg:flex-row gap-8">
