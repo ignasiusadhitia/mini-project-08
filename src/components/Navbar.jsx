@@ -7,7 +7,7 @@ import { Hamburger, Moon, Sun, Close } from '@icons';
 const navLinks = [
   {
     label: 'Blog',
-    href: '/blog',
+    href: '/',
   },
   {
     label: 'About',
@@ -25,6 +25,7 @@ const Navbar = () => {
 
   const toggleTheme = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');
+    toggleMenu();
   };
 
   const toggleMenu = () => {
@@ -74,7 +75,11 @@ const Navbar = () => {
             {/* Navigation Links */}
             <ul className="flex flex-col items-center gap-3.5">
               {navLinks.map((link) => (
-                <li key={link.label} className="text-lg leading-6 p-2">
+                <li
+                  key={link.label}
+                  className="text-lg leading-6 p-2"
+                  onClick={toggleMenu}
+                >
                   <Link to={link.href}>{link.label}</Link>
                 </li>
               ))}

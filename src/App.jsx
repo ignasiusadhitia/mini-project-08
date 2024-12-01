@@ -1,9 +1,7 @@
-import React from 'react';
-
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
 import { Footer, Navbar } from '@components';
-import { About, Blog, BlogDetails, Home, Newsletter, NotFound } from '@pages';
+import { About, BlogDetails, Home, Newsletter, NotFound } from '@pages';
 
 const routes = [
   {
@@ -11,8 +9,8 @@ const routes = [
     element: <Home />,
   },
   {
-    path: '/blog',
-    element: <Blog />,
+    path: '/',
+    element: <Home />,
   },
   {
     path: '/blog/*',
