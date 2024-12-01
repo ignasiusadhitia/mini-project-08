@@ -18,13 +18,17 @@ const BlogDetails = () => {
   const processedContent = useTailwindifyContent(post?.results?.content);
 
   return (
-    <div className="container p-8 flex flex-col-reverse md:flex-row gap-8">
+    <div className="container p-8 flex flex-col-reverse lg:flex-row gap-8">
       {/* Post List */}
-      <aside className="w-full md:w-85.5 mt-8 gap-">
+      <aside className="w-full lg:w-85.5 mt-8">
         {isLoading && <div>Loading...</div>}
         {error && <div>Error: {error.message || 'Try again Later'}</div>}
         {recentPosts && (
-          <PostList display="flex flex-col" gap="gap-20" posts={recentPosts} />
+          <PostList
+            display="flex flex-col md:grid md:grid-cols-2 lg:flex lg:flex-col"
+            gap="gap-8 lg:gap-20"
+            posts={recentPosts}
+          />
         )}
       </aside>
       <main className="flex flex-col gap-8">
@@ -42,6 +46,7 @@ const BlogDetails = () => {
               <h1 className="text-4xl text-black-2 font-bold">
                 {post?.results?.title}
               </h1>
+
               <div className="flex flex-col gap-8 text-black-2 text-base">
                 {parse(processedContent)}
               </div>
