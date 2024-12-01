@@ -2,6 +2,7 @@ import parse from 'html-react-parser';
 import { useParams } from 'react-router-dom';
 
 import usePosts from '@hooks/usePosts';
+import useTailwindifyContent from '@hooks/useTailwindifyContent';
 
 import { NewsletterSection, PostList } from '@components';
 
@@ -13,6 +14,8 @@ const BlogDetails = () => {
     isLoading: postIsLoading,
     error: postError,
   } = usePosts(`/detail/${key}`);
+
+  const processedContent = useTailwindifyContent(post?.results?.content);
 
   return (
     <div className="container p-8 flex flex-col-reverse md:flex-row gap-8">
@@ -39,9 +42,8 @@ const BlogDetails = () => {
               <h1 className="text-4xl text-black-2 font-bold">
                 {post?.results?.title}
               </h1>
-              {console.log(post?.results?.content)}
               <div className="flex flex-col gap-8 text-black-2 text-base">
-                {parse(post?.results?.content)}
+                {parse(processedContent)}
               </div>
             </div>
           </article>
