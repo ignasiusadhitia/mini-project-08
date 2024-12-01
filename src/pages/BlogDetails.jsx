@@ -1,19 +1,12 @@
-import React from 'react';
-
+import parse from 'html-react-parser';
 import { useParams } from 'react-router-dom';
 
 import usePosts from '@hooks/usePosts';
 
 import { NewsletterSection, PostList } from '@components';
 
-const post = {
-  date: 'Sunday, 1 Jan 2023',
-  title: 'Grid system for better Design User Interface',
-};
-
 const BlogDetails = () => {
   const { '*': key } = useParams();
-
   const { data: recentPosts, isLoading, error } = usePosts('/games');
   const {
     data: post,
@@ -21,26 +14,39 @@ const BlogDetails = () => {
     error: postError,
   } = usePosts(`/detail/${key}`);
 
-  if (isLoading || postIsLoading) {
-    return <div>Loading...</div>;
-  }
-  if (error || postError) {
-    return <div>Error: {error?.message || 'Try again later'}</div>;
-  }
-
-  const { author, categories, content, date, title } = post.results;
-
   return (
     <div className="container p-8 flex flex-col-reverse md:flex-row gap-8">
       {/* Post List */}
-      <aside className="w-full md:w-85.5">
-        <PostList posts={recentPosts} />
+      <aside className="w-full md:w-85.5 mt-8 gap-">
+        {isLoading && <div>Loading...</div>}
+        {error && <div>Error: {error.message || 'Try again Later'}</div>}
+        {recentPosts && (
+          <PostList display="flex flex-col" gap="gap-20" posts={recentPosts} />
+        )}
       </aside>
       <main className="flex flex-col gap-8">
-        <article className="mb-12">
-          <time>{date}</time>
-          <h1>{title}</h1>
-        </article>
+        {postIsLoading && <div>Loading...</div>}
+        {postError && (
+          <div>Error: {postError.message || 'Try again later'}</div>
+        )}
+
+        {post && (
+          <article className="mb-12">
+            <div className="flex flex-col gap-8">
+              <time className="text-purple font-semibold text-sm">
+                {post?.results?.date}
+              </time>
+              <h1 className="text-4xl text-black-2 font-bold">
+                {post?.results?.title}
+              </h1>
+              {console.log(post?.results?.content)}
+              <div className="flex flex-col gap-8 text-black-2 text-base">
+                {parse(post?.results?.content)}
+              </div>
+            </div>
+          </article>
+        )}
+
         <section>
           <NewsletterSection />
         </section>

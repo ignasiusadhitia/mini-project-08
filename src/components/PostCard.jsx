@@ -10,6 +10,7 @@ const PostCard = ({
   imageWidth,
   imageHeight,
   showIcon,
+  showLabel,
   clampText,
   post,
 }) => {
@@ -20,7 +21,7 @@ const PostCard = ({
       >
         {/* Article image */}
         <img
-          alt=""
+          alt="post-image"
           className={`${imageWidth} ${imageHeight ? imageHeight : 'h-50'} object-cover`}
           src={post?.thumb}
         />
@@ -31,7 +32,7 @@ const PostCard = ({
             <div className="text-purple font-semibold text-sm">
               <span>{post?.author}</span>
               <span> • </span>
-              <time dateTime="">{post?.time}</time>
+              <time>{post?.time}</time>
             </div>
 
             {/* Article title */}
@@ -51,11 +52,13 @@ const PostCard = ({
           </div>
 
           {/* Article categories */}
-          <PostLabel
-            bgColor="bg-soft-pink-1"
-            label={post?.tag}
-            labelColor="text-pink"
-          />
+          {showLabel && (
+            <PostLabel
+              bgColor="bg-soft-pink-1"
+              label={post?.tag}
+              labelColor="text-pink"
+            />
+          )}
         </div>
       </article>
     </Link>
@@ -74,6 +77,7 @@ PostCard.propTypes = {
   }),
   margin: PropTypes.string,
   showIcon: PropTypes.bool,
+  showLabel: PropTypes.bool,
   imageWidth: PropTypes.string,
   imageHeight: PropTypes.string,
   display: PropTypes.string,

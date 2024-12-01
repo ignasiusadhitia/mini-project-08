@@ -33,20 +33,20 @@ const Home = () => {
                 showIcon
                 imageHeight="h-57"
                 imageWidth="w-full"
-                post={recentPosts[0]}
+                post={recentPosts?.[0]}
               />
               <div className="grid grid-rows-2 gap-8">
                 <PostCard
                   clampText
                   display="md:flex"
                   imageWidth="w-full md:w-80"
-                  post={recentPosts[1]}
+                  post={recentPosts?.[1]}
                 />
                 <PostCard
                   clampText
                   display="md:flex"
                   imageWidth="w-full md:w-80"
-                  post={recentPosts[2]}
+                  post={recentPosts?.[2]}
                 />
               </div>
             </div>
@@ -56,7 +56,7 @@ const Home = () => {
               imageHeight="h-50"
               imageWidth="w-full"
               margin="my-7.5"
-              post={recentPosts[3]}
+              post={recentPosts?.[3]}
             />
           </div>
         </section>
