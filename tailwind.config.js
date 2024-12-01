@@ -53,6 +53,7 @@ export default {
       },
       padding: {
         7.5: '1.875rem',
+        33: '8.25rem',
       },
       borderRadius: {
         '3.5xl': '1.8125rem',
