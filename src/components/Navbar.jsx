@@ -66,7 +66,10 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Navigation Toggle */}
-          <Hamburger className="md:hidden" onClick={toggleMenu} />
+          <Hamburger
+            className="md:hidden cursor-pointer"
+            onClick={toggleMenu}
+          />
         </nav>
       </div>
 
@@ -101,7 +104,7 @@ const Navbar = () => {
             </div>
           </nav>
           <Close
-            className={`absolute bottom-4 left-0 right-0 mx-auto`}
+            className={`absolute bottom-4 left-0 right-0 mx-auto cursor-pointer`}
             onClick={toggleMenu}
           />
         </>
