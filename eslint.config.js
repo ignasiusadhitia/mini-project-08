@@ -21,6 +21,8 @@ export default [
         ...globals.node,
         ...globals.mocha,
         ...globals.jest,
+        ...globals.cypress,
+        cy: 'readonly',
       },
       parserOptions: {
         ecmaVersion: 'latest',
@@ -52,7 +54,6 @@ export default [
       'react-refresh': reactRefresh,
       import: eslintPluginImport,
       prettier,
-      cypress,
       jest,
     },
     rules: {
@@ -136,7 +137,9 @@ export default [
   },
   {
     files: ['**/*.cy.js', '**/*.cy.jsx'],
-    plugins: ['cypress'],
+    plugins: {
+      cypress,
+    },
     rules: {
       'no-undef': ['error', { typeof: true }],
       'cypress/no-assigning-return-values': 'error',
