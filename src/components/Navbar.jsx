@@ -39,10 +39,18 @@ const Navbar = () => {
   return (
     <>
       <div className="w-full fixed top-0 bg-white">
-        <nav className="container flex items-center justify-between pt-10 pb-7.5 px-8 lg:px-0 text-black-2">
+        <nav
+          className="container flex items-center justify-between pt-10 pb-7.5 px-8 lg:px-0 text-black-2"
+          data-cy="main-nav"
+        >
           {/* Logo */}
           <Link to="/">
-            <span className="font-semibold text-lg leading-6">LumosBlog</span>
+            <span
+              className="font-semibold text-lg leading-6"
+              data-cy="app-logo"
+            >
+              LumosBlog
+            </span>
           </Link>
 
           {/* Tablet and Desktop Navigation */}
@@ -73,6 +81,7 @@ const Navbar = () => {
           {/* Mobile Navigation Toggle */}
           <Hamburger
             className="md:hidden cursor-pointer"
+            data-cy="hamburger-icon"
             onClick={toggleMenu}
           />
         </nav>
@@ -81,7 +90,10 @@ const Navbar = () => {
       {/* Mobile Navigation */}
       {isOpen && (
         <>
-          <nav className="flex flex-col absolute md:hidden items-center justify-center gap-3.5 w-full bg-white top-0 h-screen">
+          <nav
+            className="flex flex-col absolute md:hidden items-center justify-center gap-3.5 w-full bg-white top-0 h-screen"
+            data-cy="mobile-nav"
+          >
             {/* Navigation Links */}
             <ul className="flex flex-col items-center gap-3.5">
               {navLinks.map((link) => (
@@ -110,6 +122,7 @@ const Navbar = () => {
           </nav>
           <Close
             className={`absolute bottom-4 left-0 right-0 mx-auto cursor-pointer`}
+            data-cy="close-icon"
             onClick={toggleMenu}
           />
         </>
