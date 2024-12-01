@@ -41,7 +41,7 @@ const NewsletterSection = () => {
         solutions, and updates.
       </p>
       <form className="px-8 md:px-33 mt-10" onSubmit={handleSubmit}>
-        <div className="flex gap-4">
+        <div className="flex flex-col md:flex-row gap-4">
           <input
             className="px-3 py-2 flex-grow bg-white border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-500
       focus:outline-none focus:border-purple focus:ring-1 focus:ring-purple
