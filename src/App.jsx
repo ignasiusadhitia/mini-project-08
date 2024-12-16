@@ -1,7 +1,22 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
 import { Footer, Navbar } from '@components';
-import { About, BlogDetails, Home, Newsletter, NotFound } from '@pages';
+import {
+  About,
+  Account,
+  AllProducts,
+  BestSelling,
+  Cart,
+  Checkout,
+  Contact,
+  Home,
+  Login,
+  NotFound,
+  Product,
+  Register,
+  ThankYou,
+  Whislist,
+} from '@pages';
 
 const routes = [
   {
@@ -9,20 +24,52 @@ const routes = [
     element: <Home />,
   },
   {
-    path: '/',
-    element: <Home />,
-  },
-  {
-    path: '/blog/*',
-    element: <BlogDetails />,
-  },
-  {
     path: '/about',
     element: <About />,
   },
   {
-    path: '/newsletter',
-    element: <Newsletter />,
+    path: '/account',
+    element: <Account />,
+  },
+  {
+    path: '/products',
+    element: <AllProducts />,
+  },
+  {
+    path: '/products/:id',
+    element: <Product />,
+  },
+  {
+    path: '/best-selling',
+    element: <BestSelling />,
+  },
+  {
+    path: '/cart',
+    element: <Cart />,
+  },
+  {
+    path: '/checkout',
+    element: <Checkout />,
+  },
+  {
+    path: '/contact',
+    element: <Contact />,
+  },
+  {
+    path: '/login',
+    element: <Login />,
+  },
+  {
+    path: '/register',
+    element: <Register />,
+  },
+  {
+    path: '/thank-you',
+    element: <ThankYou />,
+  },
+  {
+    path: '/whislist',
+    element: <Whislist />,
   },
   {
     path: '*',
@@ -34,7 +81,7 @@ const App = () => {
   return (
     <Router>
       <Navbar />
-      <div className="min-h-screen mt-28">
+      <div>
         <Routes>
           {routes.map(({ path, element }) => (
             <Route key={path} element={element} path={path} />

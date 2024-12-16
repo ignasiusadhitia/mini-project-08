@@ -38,6 +38,7 @@ export default [
             ['@icons', './src/assets/icons'],
             ['@images', './src/assets/images'],
             ['@components', './src/components'],
+            ['@layouts', './src/layouts'],
             ['@hooks', './src/hooks'],
             ['@pages', './src/pages'],
             ['@store', './src/redux'],
