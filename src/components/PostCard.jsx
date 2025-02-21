@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { PostLabel } from '@components';
 import { ArrowLink } from '@icons';
 
+// Post card component
+
 const PostCard = ({
   margin,
   display,
